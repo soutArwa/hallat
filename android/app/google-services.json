@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "502666026601",
+    "project_id": "test-te0p30",
+    "storage_bucket": "test-te0p30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502666026601:android:dbf861ea8621738cab4cf8",
+        "android_client_info": {
+          "package_name": "com.mycompany.hallat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKxUWfm87UefOpu49dBeUUtuBas8IMECI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
