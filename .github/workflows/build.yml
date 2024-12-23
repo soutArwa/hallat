@@ -12,12 +12,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for better analysis relevancy
-      # The analysis requires to retrieve dependencies and build successfully
+          fetch-depth: 0  # Disable shallow clone for analysis
+          
+      # Install Flutter
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.13.0'  # Use the required Flutter version
+
+      # Retrieve dependencies
+      - name: Install Dependencies
+        run: flutter pub get
+
+      # Build the Flutter project
       - name: Build
         run: flutter build apk
+
+      # Run SonarQube Scan
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
