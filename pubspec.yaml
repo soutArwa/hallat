@@ -65,7 +65,7 @@ dependencies:
   plugin_platform_interface: 2.1.8
   provider: 6.1.2
   rxdart: 0.27.7
-  share_plus: 9.0.0
+  share_plus: 8.0.0  # Downgraded for Dart 3.2.0 compatibility
   shared_preferences: 2.2.2
   shared_preferences_android: 2.2.1
   shared_preferences_foundation: 2.3.4
@@ -80,8 +80,8 @@ dependencies:
   stream_transform: 2.1.0
   timeago: 3.6.1
   url_launcher: 6.3.0
-  url_launcher_android: 6.3.2  # Downgraded to avoid Dart SDK conflict
-  url_launcher_ios: 6.2.4  # Downgraded to avoid Dart SDK conflict
+  url_launcher_android: 6.3.2  # Downgraded for Dart 3.2.0 compatibility
+  url_launcher_ios: 6.2.4  # Downgraded for Dart 3.2.0 compatibility
   url_launcher_platform_interface: 2.3.2
 
   cupertino_icons: ^1.0.0
