@@ -21,6 +21,9 @@ jobs:
       with:
         flutter-version: stable
 
+    - name: Upgrade Dart SDK
+      run: flutter doctor --android-licenses && flutter upgrade
+
     - name: Install dependencies
       run: flutter pub get
 
