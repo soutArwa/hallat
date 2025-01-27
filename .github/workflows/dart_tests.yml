@@ -16,13 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Flutter
+    - name: Set up Flutter (Beta Channel)
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: stable
-
-    - name: Upgrade Dart SDK
-      run: flutter doctor --android-licenses && flutter upgrade
+        flutter-version: 'beta'
 
     - name: Install dependencies
       run: flutter pub get
