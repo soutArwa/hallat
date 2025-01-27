@@ -1,4 +1,4 @@
- name: Flutter Tests
+name: Flutter Tests
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.15.0'  # نسخة سابقة تحتوي على Dart 3.2.3
+          flutter-version: '3.14.0'  # إصدار أقدم يحتوي على Dart SDK 3.2.3
 
       - name: Install dependencies
         run: flutter pub get
