@@ -1,12 +1,12 @@
-name: Dart & Flutter Tests
+name: Dart Tests
 
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   test:
@@ -16,13 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
         with:
-          flutter-version: '3.13.0' # تأكدي من أن هذا الإصدار يدعم Dart لديك
+          sdk: '>=3.103.20241202 <4.0.0'
 
-      - name: Install dependencies
-        run: flutter pub get
+      - name: Get dependencies
+        run: dart pub get
 
       - name: Run tests
-        run: flutter test
+        run: dart test
