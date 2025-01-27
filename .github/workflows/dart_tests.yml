@@ -19,7 +19,7 @@ jobs:
       - name: Set up Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: '>=3.2.3 <4.0.0'  # تحديث النسخة المطلوبة من Dart SDK
+          sdk: '>=3.3.0 <4.0.0'  # استخدام إصدار متاح
 
       - name: Get dependencies
         run: dart pub get
