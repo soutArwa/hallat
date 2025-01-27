@@ -1,4 +1,4 @@
-name: Dart Tests
+name: Dart & Flutter Tests
 
 on:
   push:
@@ -13,28 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Setup Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.16.0"  # تأكد من أن هذا الإصدار حديث
+          flutter-version: '3.13.0' # تأكدي من أن هذا الإصدار يدعم Dart لديك
 
-      - name: Verify Flutter installation
-        run: flutter --version  # يعرض إصدار Flutter و Dart للتأكد
-
-      - name: Upgrade Flutter SDK
-        run: flutter upgrade  # يضمن أن لديك أحدث نسخة
-
-      - name: Check Dart version
-        run: dart --version  # تأكد من أن Dart هو 3.2.3 أو أحدث
-
-      - name: Get dependencies
+      - name: Install dependencies
         run: flutter pub get
-
-      - name: Upgrade dependencies (اختياري)
-        run: flutter pub upgrade
 
       - name: Run tests
         run: flutter test
