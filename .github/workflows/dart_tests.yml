@@ -16,13 +16,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Flutter (Beta Channel)
+    - name: Set up Flutter (Stable Channel)
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: 'beta'
+        flutter-version: 'stable'
 
     - name: Install dependencies
       run: flutter pub get
 
     - name: Run tests
       run: flutter test
+
