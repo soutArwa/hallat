@@ -1,29 +1,30 @@
-name: Flutter Tests
+name: Dart Tests
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
-      - main
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # 1. Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Flutter (Stable Channel)
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: 'stable'
+      # 2. Setup Dart
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
 
-    - name: Install dependencies
-      run: flutter pub get
+      # 3. Install dependencies
+      - name: Get dependencies
+        run: dart pub get
 
-    - name: Run tests
-      run: flutter test
-
+      # 4. Run tests
+      - name: Run tests
+        run: dart test
