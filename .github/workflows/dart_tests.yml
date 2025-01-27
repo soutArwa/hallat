@@ -1,4 +1,4 @@
-name: Dart Tests
+name: Flutter Tests
 
 on:
   push:
@@ -16,13 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Dart
-        uses: dart-lang/setup-dart@v1
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          sdk: '>=3.3.0 <4.0.0'  # استخدام إصدار متاح
+          flutter-version: '3.16.0'  # تأكد من أنك تستخدم إصدار يحتوي على Dart SDK 3.2.3 أو أعلى
 
-      - name: Get dependencies
-        run: dart pub get
+      - name: Install dependencies
+        run: flutter pub get
 
       - name: Run tests
-        run: dart test
+        run: flutter test
