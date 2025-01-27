@@ -19,12 +19,12 @@ jobs:
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: "3.2.3" # تثبيت الإصدار المطلوب من Dart
 
       # 3. Install dependencies
       - name: Get dependencies
-        run: dart pub get
+        run: flutter pub get
 
       # 4. Run tests
       - name: Run tests
-        run: dart test
+        run: flutter test --no-pub # تشغيل الاختبارات
