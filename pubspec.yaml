@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.2.0 <4.0.0"  # تأكد من أن هذه الإعدادات متوافقة مع الإصدار الذي تستخدمه
 
 dependencies:
   flutter:
@@ -60,7 +60,7 @@ dependencies:
   page_transition: 2.1.0
   path_provider: 2.1.3
   path_provider_android: 2.2.5
-  path_provider_foundation: ^2.4.1 
+  path_provider_foundation: ^2.4.1 # تأكد من أن هذه النسخة متوافقة
   path_provider_platform_interface: 2.1.2
   plugin_platform_interface: 2.1.8
   provider: 6.1.2
