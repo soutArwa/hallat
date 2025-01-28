@@ -1,4 +1,4 @@
-name: Flutter CI/CD
+ name: Flutter CI/CD
 
 on:
   push:
@@ -24,11 +24,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # 3. إعداد Flutter - تحديد النسخة المتوافقة مع المشروع
-      - name: Install Flutter
+      # 3. إعداد Flutter مع Dart 3.6.0 أو أعلى
+      - name: Install Flutter with Dart 3.6.0+
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'  # تحديد آخر نسخة مستقرة من Flutter
+          flutter-version: '3.7.0'  # استخدم نسخة Flutter تدعم Dart 3.6.0+
 
       # 4. تثبيت Dependencies
       - name: Install dependencies
@@ -48,4 +48,5 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
 
