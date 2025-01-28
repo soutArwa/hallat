@@ -1,4 +1,4 @@
- name: Flutter CI/CD
+name: Flutter CI/CD
 
 on:
   push:
@@ -24,29 +24,37 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      # 3. إعداد Flutter مع Dart 3.6.0 أو أعلى
-      - name: Install Flutter with Dart 3.6.0+
+      # 3. تحديث Dart SDK (إذا لم يكن مثبتًا أو كان قديمًا)
+      - name: Install Dart SDK 3.6.0+
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apt-transport-https
+          sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/stable-release.pub.gpg | apt-key add -'
+          sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/stable_release-archive-keyring.gpg | apt-key add -'
+          sudo apt-get update -y
+          sudo apt-get install dart
+
+      # 4. تثبيت Flutter
+      - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.7.0'  # استخدم نسخة Flutter تدعم Dart 3.6.0+
+          flutter-version: '3.7.0'  # تأكد من أن هذه النسخة تدعم Dart 3.6.0+
 
-      # 4. تثبيت Dependencies
+      # 5. تثبيت التبعيات
       - name: Install dependencies
         run: flutter pub get
 
-      # 5. تشغيل اختبارات Flutter
+      # 6. تشغيل الاختبارات
       - name: Run tests
         run: flutter test --no-pub
 
-      # 6. بناء ملف APK (نسخة release)
+      # 7. بناء الـ APK
       - name: Build APK
         run: flutter build apk --release
 
-      # 7. رفع الـ APK
+      # 8. رفع الـ APK
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
-
-
