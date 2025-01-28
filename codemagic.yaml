@@ -46,7 +46,8 @@ workflows:
       - name: Build debug APK
         script: |
           echo "Step 4: Building debug APK..."
-          flutter build apk --debug
+          flutter clean # تنظيف المشروع قبل البناء
+          flutter build apk --debug || { echo "Build failed"; error_count=$((error_count+1)); }
 
       - name: Report errors
         script: |
