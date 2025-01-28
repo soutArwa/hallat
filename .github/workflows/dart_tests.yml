@@ -13,36 +13,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # الخطوة الأولى: Checkout الكود
+      # 1. Checkout الكود
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # الخطوة الثانية: إعداد Java 17
+      # 2. إعداد Java 17
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      # الخطوة الثالثة: تثبيت Flutter
+      # 3. إعداد Flutter - تحديد النسخة المتوافقة مع المشروع
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'  # تأكد من تحميل النسخة المستقرة
+          flutter-version: 'stable'  # تحديد آخر نسخة مستقرة من Flutter
 
-      # الخطوة الرابعة: تثبيت dependencies
+      # 4. تثبيت Dependencies
       - name: Install dependencies
         run: flutter pub get
 
-      # الخطوة الخامسة: تشغيل اختبارات Flutter
+      # 5. تشغيل اختبارات Flutter
       - name: Run tests
-        run: flutter test
+        run: flutter test --no-pub
 
-      # الخطوة السادسة: بناء الـ APK
+      # 6. بناء ملف APK (نسخة release)
       - name: Build APK
         run: flutter build apk --release
 
-      # الخطوة السابعة: رفع الـ APK الناتج
+      # 7. رفع الـ APK
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
