@@ -1,4 +1,4 @@
-name: Automated test 
+name: Flutter CI/CD
 
 on:
   push:
@@ -13,31 +13,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # الخطوة الأولى: Checkout الكود
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # الخطوة الثانية: إعداد Java 17
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '17'
 
+      # الخطوة الثالثة: تثبيت Flutter
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.27.3'
+          flutter-version: 'stable'  # تأكد من تحميل النسخة المستقرة
 
+      # الخطوة الرابعة: تثبيت dependencies
       - name: Install dependencies
         run: flutter pub get
 
+      # الخطوة الخامسة: تشغيل اختبارات Flutter
       - name: Run tests
         run: flutter test
 
+      # الخطوة السادسة: بناء الـ APK
       - name: Build APK
         run: flutter build apk --release
 
+      # الخطوة السابعة: رفع الـ APK الناتج
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
           name: release-apk
           path: build/app/outputs/flutter-apk/app-release.apk
+
