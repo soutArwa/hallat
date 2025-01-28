@@ -1,0 +1,18 @@
+workflows:
+  version: 2
+  flutter:
+    name: Flutter CI/CD
+    max_build_duration: 60
+    jobs:
+      - name: Build and Test
+        instance_type: mac_mini
+        timeout: 120
+        setup:
+          flutter: stable
+          dart: stable
+        scripts:
+          - flutter pub get
+          - flutter test
+          - flutter build apk --release
+        artifacts:
+          - build/app/outputs/flutter-apk/app-release.apk
