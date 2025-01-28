@@ -19,7 +19,7 @@
 #         script: |
 #           flutter build apk --debug || echo "Build failed, skipping..."
 
-workflows:
+workflows: Automated Testing
   flutter-workflow:
     name: Flutter CI/CD with Unit Testing
     max_build_duration: 120 # وقت كافي (ساعتين)
