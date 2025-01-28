@@ -40,19 +40,24 @@ jobs:
         with:
           flutter-version: '3.7.0'  # تأكد من أن هذه النسخة تدعم Dart 3.6.0+
 
-      # 5. تثبيت التبعيات
+      # 5. إضافة خطوة flutter doctor للتحقق من الإصدارات
+      - name: Check Flutter & Dart Versions
+        run: |
+          flutter doctor -v
+
+      # 6. تثبيت التبعيات
       - name: Install dependencies
         run: flutter pub get
 
-      # 6. تشغيل الاختبارات
+      # 7. تشغيل الاختبارات
       - name: Run tests
         run: flutter test --no-pub
 
-      # 7. بناء الـ APK
+      # 8. بناء الـ APK
       - name: Build APK
         run: flutter build apk --release
 
-      # 8. رفع الـ APK
+      # 9. رفع الـ APK
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
